@@ -32,7 +32,7 @@ public class GenereteDO {
         ClassLoader classLoader = GenereteDO.class.getClassLoader();
         for (File names : f.listFiles()) {
             String className = names.getName().split("\\.")[0];
-            Class c = classLoader.loadClass("Domain."+className);
+            Class c = classLoader.loadClass("Domain." + className);
             main.process(c, className);
         }
     }
@@ -66,6 +66,8 @@ public class GenereteDO {
                 type[i - 1] = "Time";
             } else if (typ.equals("boolean")) {
                 type[i - 1] = "Boolean";
+            } else if (typ.equals("double")) {
+                type[i - 1] = "Double";
             }
             System.out.println(type[i - 1]);
         }
@@ -74,7 +76,8 @@ public class GenereteDO {
         System.out.println(f.getAbsolutePath());
         PrintWriter t = new PrintWriter(f);
 
-        t.println("package do;\n"
+        t.println("package Do;\n"
+                + "import Domain.*;\n"
                 + "import java.sql.Connection;\n"
                 + "import java.sql.PreparedStatement;\n"
                 + "import java.sql.ResultSet;\n"
